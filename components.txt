@@ -1,0 +1,11 @@
+@startuml
+database "СУБД" {
+ component "база данных" as db
+}
+[Система управления поставками запчастей] as partsSystem 
+[Система учета заказов] as ordersSystem
+[Электронная бухгалтерия] as accountingSystem 
+accountingSystem ..> db
+ordersSystem ..> db
+partsSystem ..> db
+@enduml
