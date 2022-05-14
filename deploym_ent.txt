@@ -1,0 +1,32 @@
+@startuml
+node Сервер{
+database "СУБД" {
+ component "база данных" as db
+}
+[Система управления поставками запчастей] as partsSystem 
+[Система учета заказов] as ordersSystem
+[Электронная бухгалтерия] as accountingSystem 
+accountingSystem ..> db
+ordersSystem ..> db
+partsSystem ..> db
+}
+node man_comp as "Компьютер менеджера"{
+artifact prog as "Клиентский модуль программы управления заказами" {
+}
+artifact prog2 as "Клиентский модуль программы управления поставками запчастей" {
+}
+
+artifact prog3 as "Клиентский модуль электронной бухгалтерии" {
+}
+
+}
+node master_comp as "Компьютер мастера"{
+artifact prog21 as "Клиентский модуль программы управления заказами" {
+}
+}
+node Принтер{
+}
+man_comp -- Сервер
+master_comp -- Сервер
+man_comp-- Принтер
+@enduml
